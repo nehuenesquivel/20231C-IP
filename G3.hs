@@ -1,21 +1,20 @@
-{-
 --1
 --a
-f :: Integer -> Integer
-f n | n == 1 = 8
-    | n == 4 = 131
-    | n == 16 = 16
+f1 :: Integer -> Integer
+f1 n | n == 1 = 8
+     | n == 4 = 131
+     | n == 16 = 16
 --b
-g :: Integer -> Integer
-g n | n == 8 = 16
-    | n == 16 = 4
-    | n == 1 = 131
+g1 :: Integer -> Integer
+g1 n | n == 8 = 16
+     | n == 16 = 4
+     | n == 1 = 131
 --c
 h :: Integer -> Integer
-h n = f(g n)
+h n = f1(g1 n)
 
 k :: Integer -> Integer
-k n = g(f n)
+k n = g1(f1 n)
 
 --3
 estanRelacionados :: Integer -> Integer -> Bool
@@ -23,15 +22,15 @@ estanRelacionados a b = mod (-a) b == 0
 
 --5
 todosMenores :: (Integer, Integer, Integer) -> Bool
-todosMenores (n1, n2, n3) = f n1 > g n1 && f n2 > g n2 && f n3 > g n3
+todosMenores (n1, n2, n3) = f2 n1 > g2 n1 && f2 n2 > g2 n2 && f2 n3 > g2 n3
 
-f :: Integer -> Integer
-f n | n <= 7 = n ^ 2
-    | n > 7 = 2 * n - 1
+f2 :: Integer -> Integer
+f2 n | n <= 7 = n ^ 2
+     | n > 7 = 2 * n - 1
 
-g :: Integer -> Integer
-g n | esPar n = div n 2
-    | otherwise = 3 * n + 1
+g2 :: Integer -> Integer
+g2 n | esPar n = div n 2
+     | otherwise = 3 * n + 1
 
 esPar :: Integer -> Bool
 esPar n = mod n 2 == 0
@@ -55,4 +54,3 @@ comparar a b | sumaUltimosDosDigitos a < sumaUltimosDosDigitos b = 1
 
 sumaUltimosDosDigitos :: Integer -> Integer
 sumaUltimosDosDigitos x = mod x 10 + mod (div x 10) 10
--}
