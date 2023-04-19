@@ -52,3 +52,16 @@ impar :: Integer -> Integer
 impar 1 = 1
 impar n = sumaImpares(n - 1) + 2
 encontré banda de relacioes entre números, fibonacci es ^2 y tal n x2 contiene n impares-}
+
+--10
+f1 :: Integer -> Integer
+f1 0 = 1
+f1 n = f1(n - 1) + 2 ^ n
+
+f2 :: Integer -> Float -> Float
+f2 1 q = q
+f2 n q = f2 (n - 1) q + q ^ n
+
+-- f3 :: Integer -> Float -> Float
+-- f3 1 q = q ^ 2
+-- f3 n q = f3 (n - 1) q + q ^ (2 * n)
