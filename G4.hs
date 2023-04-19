@@ -1,7 +1,7 @@
 --1
 fibonacci :: Integer -> Integer
 fibonacci n | n < 2 = n
-            | otherwise = fibonacci(n - 1) + fibonacci(n - 2)
+            | otherwise = fibonacci (n - 1) + fibonacci (n - 2)
 
 {-
 fibonacci 0 = 0
@@ -11,9 +11,9 @@ fibonacci n = fibonacci(n - 1) + fibonacci(n - 2)
 
 --2
 parteEntera :: Float -> Integer
-parteEntera x | x <= -1 = parteEntera(x + 1) - 1
+parteEntera x | x <= -1 = parteEntera (x + 1) - 1
               | x < 0 = -1
-              | x >= 1 = parteEntera(x - 1) + 1
+              | x >= 1 = parteEntera (x - 1) + 1
               | otherwise = 0
 
 {-
@@ -34,7 +34,7 @@ esDivisible a b | a > b = esDivisible (a - b) b
 --4
 sumaImpares :: Integer -> Integer
 sumaImpares 1 = 1
-sumaImpares n = sumaImpares(n - 1) + n * 2 - 1
+sumaImpares n = sumaImpares (n - 1) + n * 2 - 1
 
 --5
 -- medioFact :: Integer -> Integer
@@ -56,12 +56,26 @@ encontré banda de relacioes entre números, fibonacci es ^2 y tal n x2 contiene
 --10
 f1 :: Integer -> Integer
 f1 0 = 1
-f1 n = f1(n - 1) + 2 ^ n
+f1 n = f1 (n - 1) + 2 ^ n
 
 f2 :: Integer -> Float -> Float
 f2 1 q = q
 f2 n q = f2 (n - 1) q + q ^ n
 
--- f3 :: Integer -> Float -> Float
--- f3 1 q = q ^ 2
--- f3 n q = f3 (n - 1) q + q ^ (2 * n)
+f3 :: Integer -> Float -> Float
+f3 n q = f2 (2 * n) q
+
+f4 :: Integer -> Float -> Float
+f4 n q = f3 n q - f2 (n - 1) q
+
+--11
+eAprox :: Integer -> Float
+eAprox 0 = 1
+eAprox n = eAprox (n - 1) + 1 / fromIntegral (factorial n)
+
+factorial :: Integer -> Integer
+factorial 0 = 1
+factorial n = factorial (n - 1) * n
+
+e :: Float
+e = eAprox 10
