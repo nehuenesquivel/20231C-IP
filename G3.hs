@@ -1,15 +1,14 @@
 --1
---a
 f1 :: Integer -> Integer
 f1 n | n == 1 = 8
      | n == 4 = 131
      | n == 16 = 16
---b
+     
 g1 :: Integer -> Integer
 g1 n | n == 8 = 16
      | n == 16 = 4
      | n == 1 = 131
---c
+     
 h :: Integer -> Integer
 h n = f1(g1 n)
 
