@@ -79,3 +79,21 @@ factorial n = factorial (n - 1) * n
 
 e :: Float
 e = eAprox 10
+
+--12
+raizDe2Aprox :: Integer -> Float
+raizDe2Aprox n = sucesion n - 1
+
+sucesion :: Integer -> Float
+sucesion 1 = 2
+sucesion n = 2 + 1 / sucesion (n - 1)
+
+--13
+f5 :: Integer -> Integer -> Integer
+f5 n 1 = n
+f5 1 m = m
+f5 n m = f5 (n - 1) m + f5 n (m - 1) + n ^ m
+
+--14
+-- sumaPotencias :: Integer -> Integer -> Integer
+-- sumaPotencias q n m = 
