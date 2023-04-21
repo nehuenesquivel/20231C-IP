@@ -1,7 +1,7 @@
- main :: IO ()
- main = do
-   x <- readLn
-   print (sumaMenosQueMax (x :: (Int, Int, Int)))
+main :: IO ()
+main = do
+  x <- readLn
+  print (sumaMenosQueMax (x :: (Int, Int, Int)))
 
 sumaMenosQueMax :: (Int, Int, Int) -> Bool
 sumaMenosQueMax (a, b, c) = Main.max a b c > Main.min a b c + medio a b c
