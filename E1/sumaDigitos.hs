@@ -1,4 +1,3 @@
--- No editar esta parte
 main :: IO()
 main = do {
   x <- readLn ;
@@ -6,6 +5,5 @@ main = do {
   }
 
 sumaDigitos :: Int -> Int
--- Completar la definición de la función
-
--- Pueden agregan las funciones que consideren necesarias
+sumaDigitos n | n < 10 = n
+              | otherwise = sumaDigitos(div n 10) + mod n 10
