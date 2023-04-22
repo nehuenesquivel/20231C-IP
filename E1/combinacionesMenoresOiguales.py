@@ -2,7 +2,6 @@ r = 0
 n = 5
 
 print("n: " + str(n))
-
 print()
 
 for i in range(n, 0, -1):
@@ -13,7 +12,7 @@ for i in range(n, 0, -1):
 
         if (i * j <= n):
             r = r + 1
-            print("yes!")
+            print("yay!")
             
     print()
     
