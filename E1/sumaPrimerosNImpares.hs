@@ -1,4 +1,3 @@
--- No editar esta parte
 main :: IO()
 main = do {
   x <- readLn ;
@@ -6,8 +5,9 @@ main = do {
   }
 
 sumaPrimerosNImpares :: Integer -> Integer
--- Completar la definición de la función
+sumaPrimerosNImpares n = aux (2 * n - 1)
 
--- Pueden agregan las funciones que consideren necesarias
-
-
+aux :: Integer -> Integer
+aux 1 = 4
+aux n | mod n 2 == 0 = aux (n - 1) + 0
+      | otherwise = aux (n - 1) + 2 * n + 2

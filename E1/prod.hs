@@ -1,4 +1,3 @@
--- No editar esta parte
 main :: IO()
 main = do {
   x <- readLn ;
@@ -6,6 +5,8 @@ main = do {
   }
 
 prod :: Integer -> Integer
--- Completar la definición de la función
+prod n = aux (2 * n)
 
--- Pueden agregan las funciones que consideren necesarias
+aux :: Integer -> Integer
+aux 1 = 3
+aux n = aux (n - 1) * (n ^ 2 + 2 * n)
