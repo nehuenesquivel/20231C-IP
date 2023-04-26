@@ -25,3 +25,16 @@ todosIguales :: (Eq t) => [t] -> Bool
 todosIguales [] = False
 todosIguales [e] = True
 todosIguales (h:t) = h == head t && todosIguales t
+
+todosDistintos :: (Eq t) => [t] -> Bool
+todosDistintos [] = False
+todosDistintos [e] = True
+todosDistintos (h:t) = auxtd h t && todosDistintos t
+
+auxtd :: (Eq t) => t -> [t] -> Bool
+auxtd _ [] = True
+auxtd e (h:t) = e /= h && auxtd e t
+
+hayRepetidos :: (Eq t) => [t] -> Bool
+hayRepetidos [] = False
+hayRepetidos (h:t) = not (auxtd h t) || hayRepetidos t
