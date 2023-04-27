@@ -38,3 +38,13 @@ auxtd e (h:t) = e /= h && auxtd e t
 hayRepetidos :: (Eq t) => [t] -> Bool
 hayRepetidos [] = False
 hayRepetidos (h:t) = not (auxtd h t) || hayRepetidos t
+
+quitar :: (Eq t) => t -> [t] -> [t]
+quitar _ [] = []
+quitar e (h:t) | e == h = t
+               | otherwise = h : quitar e t
+
+quitarTodos :: (Eq t) => t -> [t] -> [t]
+quitarTodos _ [] = []
+quitarTodos e (h:t) | e == h = quitarTodos e t
+                    | otherwise = h : quitarTodos e t
