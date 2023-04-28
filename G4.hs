@@ -97,3 +97,12 @@ f5 n m = f5 (n - 1) m + f5 n (m - 1) + n ^ m
 --14
 -- sumaPotencias :: Integer -> Integer -> Integer
 -- sumaPotencias q n m = 
+
+--15
+sumaRacionales :: Integer -> Integer -> Float
+sumaRacionales 0 m = 0
+sumaRacionales n m = auxsr n m + sumaRacionales (n - 1) m
+
+auxsr :: Integer -> Integer -> Float
+auxsr n 0 = 0
+auxsr n m = fromIntegral n / fromIntegral m + auxsr n (m - 1)
