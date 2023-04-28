@@ -48,3 +48,43 @@ quitarTodos :: (Eq t) => t -> [t] -> [t]
 quitarTodos _ [] = []
 quitarTodos e (h:t) | e == h = quitarTodos e t
                     | otherwise = h : quitarTodos e t
+
+eliminarRepetidos :: (Eq t) => [t] -> [t]
+eliminarRepetidos [] = []
+eliminarRepetidos (h:t) = h : eliminarRepetidos (quitarTodos h t)
+
+mismosElementos :: (Eq t) => [t] -> [t] -> Bool
+mismosElementos s r = auxme s r && auxme r s
+
+auxme :: (Eq t) => [t] -> [t] -> Bool
+auxme [] _ = True
+auxme (h:t) s = pertenece h s && auxme t s
+
+capicua :: (Eq t) => [t] -> Bool
+capicua [] = True
+capicua [e] = True
+capicua (h:t) = h == ultimo t && capicua (principio t)
+
+--3
+sumatoria :: [Integer] -> Integer
+sumatoria [] = 0
+sumatoria (h:t) = h + sumatoria t
+
+productoria :: [Integer] -> Integer
+productoria [] = 1
+productoria (h:t) = h * productoria t
+
+maximo :: [Integer] -> Integer
+maximo [e] = e
+maximo (h:t) | h > head t = maximo (h : tail t)
+             | otherwise = maximo t
+
+sumarN :: Integer -> [Integer] -> [Integer]
+sumarN _ [] = []
+sumarN n (h:t) = h + n : sumarN n t
+
+sumarElPrimero :: [Integer] -> [Integer]
+sumarElPrimero s = sumarN (head s) s
+
+sumarElUltimo :: [Integer] -> [Integer]
+sumarElUltimo s = sumarN (ultimo s) s
