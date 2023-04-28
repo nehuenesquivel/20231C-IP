@@ -88,3 +88,22 @@ sumarElPrimero s = sumarN (head s) s
 
 sumarElUltimo :: [Integer] -> [Integer]
 sumarElUltimo s = sumarN (ultimo s) s
+
+pares :: [Integer] -> [Integer]
+pares [] = []
+pares (h:t) | mod h 2 == 0 = h : pares t
+            | otherwise = pares t
+
+multiplosDeN :: Integer -> [Integer] -> [Integer]
+multiplosDeN _ [] = []
+multiplosDeN n (h:t) | mod h n == 0 = h : multiplosDeN n t
+                     | otherwise = multiplosDeN n t
+
+-- ordenar :: [Integer] -> [Integer]
+-- ordenar [] = []
+-- ordenar (h:t) | h < head t = auxo (head s s) ++ ordenar (tail s)
+
+-- auxo :: Integer -> [Integer] -> [Integer]
+-- auxo [e] = e
+-- auxo (h:t) | h < head t = auxo (h : tail t)
+--            | otherwise = auxo t
