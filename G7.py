@@ -98,7 +98,7 @@ def imprimir_cuenta_regresiva_a(numero: int):
         i -= 1
     print("despegue")
 
-def imprimir_viaje_en_el_tiempo_a(año_de_partida: int, año_de_llegada: int):    
+def imprimir_viaje_en_el_tiempo_a(año_de_partida: int, año_de_llegada: int):
     i: int = año_de_partida
     while i > año_de_llegada:
         i -= 1
@@ -117,11 +117,11 @@ def imprimir_numeros_del_1_al_10_b():
         print(i)
 
 def imprimir_numeros_pares_del_10_al_40_b():
-    for i in range(10, 41, 2):        
+    for i in range(10, 41, 2):
         print(i)
 
 def imprimir_palabra_eco_10_veces_b():
-    for i in range(1, 11):        
+    for i in range(1, 11):
         print("eco")
 
 def imprimir_cuenta_regresiva_b(numero: int):
