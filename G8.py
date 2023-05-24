@@ -11,7 +11,7 @@ def divideATodos(s: list, e: int) -> bool:
             return False
     return True
 
-def sumaTotal(s: list) -> int:
+def sumaTotal(s: list[int]) -> int:
     resultado: int = 0
     for i in range(0, len(s)):
         resultado += s[i]
