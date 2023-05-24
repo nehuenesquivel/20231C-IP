@@ -58,12 +58,12 @@ def ambos_son_0(numero1: float, numero2: float) -> bool:
 def es_nombre_largo(nombre: str) -> bool:
     return 2 < len(nombre) < 9
 
-def es_bisiesto(ano: int) -> bool:
-    return ano % 400 == 0 or (ano % 4 == 0 and ano % 100 != 0)
+def es_bisiesto(año: int) -> bool:
+    return año % 400 == 0 or (año % 4 == 0 and año % 100 != 0)
 
 #4
-def peso_pino(altura: float) -> float:
-    return altura * 300 if altura <= 3 else 900 + (altura - 3) * 200
+def peso_pino(altura: float) -> float:    
+    return min(altura, 3) * 300 + max(altura - 3, 0) * 200
 
 def es_peso_util(peso: float) -> bool:
     return 400 <= peso <= 1000
