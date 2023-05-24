@@ -12,13 +12,15 @@ def piedraGanaATijera(j1: str, j2: str) -> bool:
 def gana(j1: str, j2: str) -> bool:
   return piedraGanaATijera(j1, j2) or tijeraGanaAPapel(j1, j2) or papelGanaAPiedra(j1, j2)
 
-def quienGana(j1: str, j2: str) -> str: 
+def quienGana(j1: str, j2: str) -> str:
+  resultado: str = ""
   if gana(j1, j2):
-    return "Jugador1"
+    resultado = "Jugador1"
   elif gana(j2, j1):
-    return "Jugador2"
+    resultado = "Jugador2"
   else:
-    return "Empate"
+    resultado = "Empate"
+  return resultado
 
 if __name__ == '__main__':
   x = input()

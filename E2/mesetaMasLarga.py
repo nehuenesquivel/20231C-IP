@@ -1,12 +1,27 @@
 from typing import List
 
-# Aclaración: Debido a la versión de Python del CMS, para el tipo Lista, la sintaxis de la definición de tipos que deben usar es la siguiente:
-# l: List[int]  <--Este es un ejemplo para una lista de enteros.
-# Respetar esta sintaxis, ya que el CMS dirá que no pasó ningún test si usan otra notación.
 def mesetaMasLarga(l: List[int]) -> int :
-  # Implementar esta funcion
-  return 0
+  longitudMeseta: int = 0
+  longitudLista: int = len(l)
+  if longitudLista < 2:
+    longitudMeseta = longitudLista
+  else:
+    longitud: int = 2
+    for i in range(2, longitudLista):
+        while(l[i] == l[i - 1]):
+          longitud += 1
+          i += 1
+        longitudMeseta = max(longitudMeseta, longitud) 
 
+
+      # if (l[i] != l[i - 1] or i + 1 == longitudLista):
+      #   longitudMeseta = max(longitudMeseta, i + 1 - inicio)
+      #   inicio = i + 1
+
+    # if (l[i] != l[i + 1] or i == len(l) - 2):
+    #   longitud = i + 1 - inicio
+    #   inicio = i + 1
+  return longitudMeseta
 if __name__ == '__main__':
   x = input()
   print(mesetaMasLarga([int(j) for j in x.split()]))
