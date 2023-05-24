@@ -62,7 +62,7 @@ def es_bisiesto(año: int) -> bool:
     return año % 400 == 0 or (año % 4 == 0 and año % 100 != 0)
 
 #4
-def peso_pino(altura: float) -> float:    
+def peso_pino(altura: float) -> float:
     return min(altura, 3) * 300 + max(altura - 3, 0) * 200
 
 def es_peso_util(peso: float) -> bool:
