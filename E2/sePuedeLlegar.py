@@ -1,13 +1,18 @@
 from typing import List
 from typing import Tuple
 
-# Aclaración: Debido a la versión de Python del CMS, para el tipo Lista y Tupla, la sintaxis de la definición de tipos que deben usar es la siguiente:
-# l: List[int]  <--Este es un ejemplo para una lista de enteros.
-# t: Tuple[str,str]  <--Este es un ejemplo para una tupla de strings.
-# Respetar esta sintaxis, ya que el CMS dirá que no pasó ningún test si usan otra notación.
-def sePuedeLlegar(origen: str, destino: str, vuelos: List[Tuple[str, str]]) -> int :
-  # definir esta función
-  return 0
+def sePuedeLlegar(origen: str, destino: str, vuelos: List[Tuple[str, str]]) -> int:
+  resultado: int = 0
+  longitud: int = len(vuelos)
+  escala: str = origen
+  i: int = 0
+  while escala != destino and i < longitud:
+    for j in range(0, longitud):
+      if vuelos[j][0] == escala:
+        escala = vuelos[j][1]
+        resultado += 1
+    i += 1
+  return resultado if escala == destino else -1
 
 if __name__ == '__main__':
   origen = input()
