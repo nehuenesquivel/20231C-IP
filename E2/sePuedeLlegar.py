@@ -1,7 +1,9 @@
 from typing import List
 from typing import Tuple
 
-#implementación general, ineficiente para vuelos que no contengan origen o destino
+#implementación inficiente:
+# 1. si en los vuelos no está el origen y el destino, itera los vuelos en vano
+# 2. si en los vuelos está el origen y el destino, itera los vuelos intermedios más de una vez
 def sePuedeLlegar(origen: str, destino: str, vuelos: List[Tuple[str, str]]) -> int:
   resultado: int = 0
   longitud: int = len(vuelos)
