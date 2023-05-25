@@ -1,6 +1,7 @@
 from typing import List
 from typing import Tuple
 
+#implementación general, ineficiente para vuelos que no contengan origen o destino
 def sePuedeLlegar(origen: str, destino: str, vuelos: List[Tuple[str, str]]) -> int:
   resultado: int = 0
   longitud: int = len(vuelos)
