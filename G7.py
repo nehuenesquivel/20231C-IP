@@ -59,7 +59,7 @@ def es_nombre_largo(nombre: str) -> bool:
     return 2 < len(nombre) < 9
 
 def es_bisiesto(año: int) -> bool:
-    return año % 400 == 0 or (año % 4 == 0 and año % 100 != 0)
+    return año % 400 == 0 or (año % 4 == 0 and not año % 100 == 0)
 
 #4
 def peso_pino(altura: float) -> float:
