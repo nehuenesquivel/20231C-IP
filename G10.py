@@ -1,5 +1,6 @@
 import random
 from queue import LifoQueue as Pila
+from queue import Queue as Cola
 
 #1
 def contarLineas(nombre_archivo: str) -> int:
@@ -44,13 +45,51 @@ def armarPila(n: int, desde: int, hasta: int) -> Pila:
     return pila
 
 #10
-def cantidadElementos(pila: Pila) -> int:
+# def cantidadElementos(pila: Pila) -> int:
+#     elementos: list[int] = []
+#     while not pila.empty():
+#         elementos.append(pila.get())
+#         #print(elementos)
+#     resultado: int = len(elementos)
+#     while elementos:
+#         pila.put(elementos.pop())
+#         #print(elementos)
+#     return resultado
+
+def obtenerElementos(pila: Pila) -> list[int]:
     elementos: list[int] = []
-    while (not pila.empty()):
+    while not pila.empty():
         elementos.append(pila.get())
-    resultado: int = len(elementos)
-    while (elementos):
-        pila.put(elementos.pop())
-    return resultado
+    for e in reversed(elementos):
+        pila.put(e)
+    #print(elementos)
+    return elementos
+
+def cantidadElementos(pila: Pila) -> int:
+    return len(obtenerElementos(pila))
 
 #11
+def buscarMaximo(pila: Pila) -> int:
+    return max(obtenerElementos(pila))
+
+#12
+
+#13
+def armarCola(n: int, desde: int, hasta: int) -> Cola:
+    cola: Cola = Cola()
+    numeros: list[int] = generarNumerosAlAzar(n, desde, hasta)
+    while numeros:
+        cola.put(numeros.pop(0))
+    return cola
+
+#14
+def cantidadElementos(cola: Cola) -> int:
+    elementos: list[int] = []
+    while not cola.empty():
+        elementos.append(cola.get())
+        #print(elementos)
+    resultado: int = len(elementos)
+    while elementos:
+        cola.put(elementos.pop(0))
+        #print(elementos)
+    return resultado
