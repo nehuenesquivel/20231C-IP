@@ -1,6 +1,7 @@
-import random
-from queue import LifoQueue as Pila
 from queue import Queue as Cola
+from queue import LifoQueue as Pila
+from random import randint
+from random import sample
 
 #1
 def contarLineas(nombre_archivo: str) -> int:
@@ -30,11 +31,17 @@ def cantidadApariciones(nombre_archivo: str, palabra: str) -> int:
     return resultado
 
 #8
+# def generarNumerosAlAzar(n: int, desde: int, hasta: int) -> list[int]:
+#     resultado: list[int] = []
+#     for i in range(0, n):
+#         resultado.append(randint(desde, hasta))
+#     return resultado
+
 def generarNumerosAlAzar(n: int, desde: int, hasta: int) -> list[int]:
     intervalo: list[int] = []
     for i in range(desde, hasta + 1):
         intervalo.append(i)
-    return random.sample(intervalo, n)
+    return sample(intervalo, n)
 
 #9
 def armarPila(n: int, desde: int, hasta: int) -> Pila:
