@@ -80,6 +80,28 @@ def buscarMaximo(pila: Pila) -> int:
     return max(obtenerElementos(pila))
 
 #12
+def bienBalanceada(string: str) -> bool:
+    resultado: bool = True
+    pila: Pila = Pila()
+    digitos: list[str] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    operaciones: list[str] = ["+", "-", "*", "/"]
+    parentesisInicial: str = "("
+    parentesisFinal: str = ")"
+    espacio: str = " "
+    
+    for c in reversed(string):
+        if not c == espacio:
+            pila.put(c)
+
+    e0: str = pila.get()
+    e1: str = ""
+    while not pila.empty():
+        e1 = pila.get()
+        if (e0 == parentesisInicial and e1 == parentesisFinal) or:
+            resultado = False
+        elif e0 in operaciones and e1 = :
+
+    return resultado
 
 #13
 def armarCola(n: int, desde: int, hasta: int) -> Cola:
