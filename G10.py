@@ -110,3 +110,39 @@ def cantidadElementos(cola: Cola) -> int:
         cola.put(elementos.pop(0))
         #print(elementos)
     return resultado
+
+#18
+def obtenerPalabras(nombre_archivo: str) -> list[str]:
+    palabras: list[str] = []
+    archivo = open(nombre_archivo)
+    for linea in archivo.readlines():
+        palabras = palabras + linea.replace("\n", "").split(" ")
+    archivo.close()
+    return palabras
+
+def agruparPorLongitud(nombre_archivo: str) -> dict:
+    diccionario: dict = {}
+    longitud: int = 0
+    for palabra in obtenerPalabras(nombre_archivo):
+        longitud = len(palabra)
+        if longitud in diccionario:
+            diccionario[longitud] += 1
+        else:
+            diccionario[longitud] = 1
+    return diccionario
+
+#20
+def palabraMasFrecuente(nombre_archivo: str) -> str:
+    diccionario: dict = {}
+    for palabra in obtenerPalabras(nombre_archivo):
+        if palabra in diccionario:
+            diccionario[palabra] += 1
+        else:
+            diccionario[palabra] = 1
+    palabra: str = ""
+    apariciones: int = 0
+    for item in diccionario.items():
+        if apariciones < item[1]:
+            palabra = item[0]
+            apariciones = item[1]
+    return palabra
