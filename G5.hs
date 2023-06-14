@@ -79,6 +79,11 @@ maximo [e] = e
 maximo (h:t) | h > head t = maximo (h : tail t)
              | otherwise = maximo t
 
+-- minimo :: [Integer] -> Integer
+-- minimo [e] = e
+-- minimo (h:t) | h < head t = minimo (h : tail t)
+--              | otherwise = minimo t
+
 sumarN :: Integer -> [Integer] -> [Integer]
 sumarN _ [] = []
 sumarN n (h:t) = h + n : sumarN n t
@@ -99,11 +104,20 @@ multiplosDeN _ [] = []
 multiplosDeN n (h:t) | mod h n == 0 = h : multiplosDeN n t
                      | otherwise = multiplosDeN n t
 
--- ordenar :: [Integer] -> [Integer]
--- ordenar [] = []
--- ordenar (h:t) | h < head t = auxo (head s s) ++ ordenar (tail s)
+ordenar :: [Integer] -> [Integer]
+ordenar [] = []
+ordenar lista = ordenar (quitar maximoElemento lista) ++ [maximoElemento] where maximoElemento = maximo lista
+-- ordenar s = minimoElemento : ordenar (quitar minimoElemento s) where minimoElemento = minimo s
 
--- auxo :: Integer -> [Integer] -> [Integer]
--- auxo [e] = e
--- auxo (h:t) | h < head t = auxo (h : tail t)
---            | otherwise = auxo t
+--4
+sacarBlancosRepetidos :: [Char] -> [Char]
+sacarBlancosRepetidos [e] = [e]
+sacarBlancosRepetidos (h:t) | h == ' ' && head t == ' ' = sacarBlancosRepetidos t
+                            | otherwise = h : sacarBlancosRepetidos t
+-- sacarBlancosRepetidos ['c', 'a', 's', 'i', ' ', ' ', 'm', 'e', ' ', ' ', ' ']
+
+contarPalabras :: [Char] -> Integer
+contarPalabras [e] | e == ' ' = 0
+                   | otherwise = 1
+contarPalabras (h:t) | h /= ' ' && ( head t == ' ' = 1 + contarPalabras t
+                     | otherwise = contarPalabras t
