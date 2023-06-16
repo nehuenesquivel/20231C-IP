@@ -10,9 +10,9 @@ def calcular_expresion(expr: str) -> float:
           pila.put("(" + pila.get() + " " + char + " " + reverso + ")")
         else:
           pila.put(char)
-    expresion : str = pila.get()
-    print(expresion)
-    return float(eval(expresion)) #return float(eval(pila.get()))
+    #expresion : str = pila.get()
+    #print(expresion)
+    return float(eval(pila.get())) #return float(eval(expresion))
 
 if __name__ == '__main__':
   x = input()
