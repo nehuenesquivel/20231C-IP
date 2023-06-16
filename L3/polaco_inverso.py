@@ -4,12 +4,12 @@ def calcular_expresion(expr: str) -> float:
     pila: LifoQueue = LifoQueue()
     operaciones: list[str] = ["*", "+", "/", "-"]
     reverso: str = ""
-    for char in expr.split(" "):
-        if char in operaciones:
+    for element in expr.split(" "):
+        if element in operaciones:
           reverso = pila.get()
-          pila.put("(" + pila.get() + " " + char + " " + reverso + ")")
+          pila.put("(" + pila.get() + element + reverso + ")") #pila.put("(" + pila.get() + " " + element + " " + reverso + ")")
         else:
-          pila.put(char)
+          pila.put(element)
     #expresion : str = pila.get()
     #print(expresion)
     return float(eval(pila.get())) #return float(eval(expresion))
