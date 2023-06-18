@@ -6,36 +6,32 @@ import json
 
 def procesamiento_pedidos(pedidos: Queue, stock_productos: Dict[str, int], precios_productos: Dict[str, float]) -> List[Dict[str, Union[int, str, float, Dict[str, int]]]]:
   resultado = []
-  pedido = {}
-  nombre_producto: str = ""
-  cantidad_producto: int = 0
-  cantidad_disponible: int = 0
-
+  
   while not pedidos.empty():
     pedido = pedidos.get()
+    productos = pedido["productos"]
 
     pedido["precio_total"] = 0
-      pedido["estado"] = "completo"
+    pedido["estado"] = "completo"
+    
+    for nombre, cantidad in productos.items():
 
-    for producto in pedido["productos"].items():
-      nombre_producto = producto[0]
-      cantidad_producto = producto[1]
-      if stock_productos[nombre_producto] > 0:
+      if stock_productos[nombre] > 0:
 
-        if stock_productos[nombre_producto] - cantidad_producto < 0:
-          cantidad_disponible = stock_productos[nombre_producto]
+        if stock_productos[nombre] - cantidad < 0:
+          cantidad_disponible = stock_productos[nombre]
+          productos[nombre] = stock_productos[nombre]
           if pedido["estado"] == "completo":
             pedido["estado"] = "incompleto"
 
         else:
-          cantidad_disponible = cantidad_producto
+          cantidad_disponible = cantidad 
           
-        stock_productos[nombre_producto] -= cantidad_disponible
-        pedido["productos"][nombre_producto] = cantidad_disponible        
-        pedido["precio_total"] += float(precios_productos[nombre_producto] * cantidad_disponible)
+        stock_productos[nombre] -= cantidad_disponible
+        pedido["precio_total"] += float(precios_productos[nombre] * cantidad_disponible)
 
       else:        
-        pedido["productos"][nombre_producto] = 0
+        productos[nombre] = 0
         if pedido["estado"] == "completo":
           pedido["estado"] = "incompleto"
     
