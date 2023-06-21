@@ -10,30 +10,25 @@ def procesamiento_pedidos(pedidos: Queue, stock_productos: Dict[str, int], preci
   while not pedidos.empty():
     pedido = pedidos.get()
     productos = pedido["productos"]
-
-    pedido["precio_total"] = 0
-    pedido["estado"] = "completo"
+    precio_total = 0
+    cantidad_inicial = {}
     
     for nombre, cantidad in productos.items():
-
-      if stock_productos[nombre] > 0:
-
-        if stock_productos[nombre] - cantidad < 0:
-          cantidad_disponible = stock_productos[nombre]
-          productos[nombre] = stock_productos[nombre]
-          if pedido["estado"] == "completo":
-            pedido["estado"] = "incompleto"
-
-        else:
-          cantidad_disponible = cantidad 
-          
-        stock_productos[nombre] -= cantidad_disponible
-        pedido["precio_total"] += float(precios_productos[nombre] * cantidad_disponible)
-
-      else:        
-        productos[nombre] = 0
-        if pedido["estado"] == "completo":
-          pedido["estado"] = "incompleto"
+      cantidad_inicial[nombre] = productos[nombre]
+      if stock_productos[nombre] - cantidad < 0:
+        cantidad_disponible = stock_productos[nombre]
+        productos[nombre] = cantidad_disponible
+      else:
+        cantidad_disponible = cantidad
+      stock_productos[nombre] -= cantidad_disponible
+      precio_total += precios_productos[nombre] * cantidad_disponible
+    pedido["precio_total"] = precio_total
+        
+    pedido["estado"] = "completo"
+    for nombre, cantidad in productos.items():
+      if cantidad < cantidad_inicial[nombre]:
+        pedido["estado"] = "incompleto"
+        break
     
     resultado.append(pedido)
 
