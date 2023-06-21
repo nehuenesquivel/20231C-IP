@@ -74,13 +74,14 @@ fallos = []
 for i, test in enumerate(tests):
     pedidos: Queue = Queue()
     [pedidos.put(p) for p in test["lista_pedidos"]]
+    print()
+    print(test["stock_productos"])
     res = procesamiento_pedidos(
         pedidos, test["stock_productos"], test["precio_productos"])
+    print(test["stock_productos"])
     print(res)
     print(test["resultado_esperado"])
-    print()
-    #if res != test["resultado_esperado"] or test["stock_productos"] != test["stock_esperado"]:
-    if res != test["resultado_esperado"]:
+    if res != test["resultado_esperado"] or test["stock_productos"] != test["stock_esperado"]:
         fallos.append(i+1)
 
 if len(fallos):
